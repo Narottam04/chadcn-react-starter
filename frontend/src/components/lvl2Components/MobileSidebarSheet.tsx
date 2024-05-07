@@ -1,6 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Menu, Package2 } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -25,20 +30,24 @@ const MobileSidebarSheet = () => {
             <Package2 className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </a>
-          <Link
-            to="/"
-            className={`mx-[-0.65rem] flex ${router.location.pathname === "/" ? "bg-muted text-foreground " : "text-muted-foreground "}  items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground`}
-          >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </Link>
-          <Link
-            to="/about"
-            className={`mx-[-0.65rem] flex ${router.location.pathname === "/about" ? "bg-muted text-foreground " : "text-muted-foreground "}  items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground`}
-          >
-            <Home className="h-5 w-5" />
-            About
-          </Link>
+          <SheetClose asChild>
+            <Link
+              to="/"
+              className={`mx-[-0.65rem] flex ${router.location.pathname === "/" ? "bg-muted text-foreground " : "text-muted-foreground "}  items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground`}
+            >
+              <Home className="h-5 w-5" />
+              Dashboard
+            </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <Link
+              to="/about"
+              className={`mx-[-0.65rem] flex ${router.location.pathname === "/about" ? "bg-muted text-foreground " : "text-muted-foreground "}  items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground`}
+            >
+              <Home className="h-5 w-5" />
+              About
+            </Link>
+          </SheetClose>
         </nav>
         <div className="mt-auto">
           <Card>
