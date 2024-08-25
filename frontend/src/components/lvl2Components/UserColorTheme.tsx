@@ -10,7 +10,8 @@ import {
 import { useTheme } from "@/components/theme-provider";
 
 export default function UserColorTheme() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
+  console.log("theme is", theme);
 
   return (
     <DropdownMenu>
