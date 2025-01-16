@@ -13,12 +13,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import UserColorTheme from "@/components/lvl2Components/UserColorTheme";
+import { useTheme } from "@/components/theme-provider";
 
 export const Route = createLazyFileRoute("/setting")({
   component: Setting,
 });
 
 function Setting() {
+  const { setTheme, uiTheme } = useTheme();
+
   return (
     <div className="flex  flex-1 flex-col gap-4  p-4 md:gap-8 md:p-10">
       <div className="mx-auto grid w-full max-w-6xl gap-2">
@@ -47,7 +50,18 @@ function Setting() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <UserColorTheme />
+              <section className="flex gap-2 align-center flex-wrap">
+                <UserColorTheme />
+                {uiTheme.map((themeColor) => (
+                  <div
+                    key={themeColor.name}
+                    className="w-8 h-8 rounded-full cursor-pointer"
+                    style={{ backgroundColor: themeColor.color }}
+                    onClick={() => setTheme(themeColor.name)}
+                    title={themeColor.name}
+                  ></div>
+                ))}
+              </section>
             </CardContent>
           </Card>
           <Card x-chunk="dashboard-04-chunk-2">
